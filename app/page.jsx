@@ -1,13 +1,19 @@
-import React from 'react'
-import Link from "next/link"
+import React from "react";
+import FilterSection from "@/components/FilterSection";
+import InfoBoxes from "@/components/InfoBoxes";
+import HomeProperties from "@/components/HomeProperties";
+import connectDB from "@/config/database";
 
-const MainPage = () => {
+const MainPage = async () => {
+  console.log(process.env.MONGODB_URI);
+  await connectDB();
   return (
-    <div>
-        <h1 className="text-3xl">Hello and Welcome</h1>
-        <Link href="/properties">Show Properties</Link>
-    </div>
-  )
-}
+    <>
+      <FilterSection />
+      <InfoBoxes />
+      <HomeProperties />
+    </>
+  );
+};
 
-export default MainPage
+export default MainPage;
