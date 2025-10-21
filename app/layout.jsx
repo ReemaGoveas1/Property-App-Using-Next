@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/styles/global.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata = {
   title: "Property Application | Find your best place",
@@ -11,13 +12,17 @@ export const metadata = {
 
 const PropertyLayout = ({ children }) => {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    // <AuthProvider>
+      <html lang="en">
+        <body>
+          <AuthProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          </AuthProvider>
+        </body>
+      </html>
+    //  </AuthProvider>
   );
 };
 

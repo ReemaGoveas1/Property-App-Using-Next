@@ -11,7 +11,10 @@ const fetchProperties = async (request) => {
     }
 
     // adding http://localhost:3000 coz this is being done in server
-    const res = await fetch(`${apiDomain}/properties`);
+    //cache: "no-store" added properties will be visible without hard refresh
+    const res = await fetch(`${apiDomain}/properties`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");

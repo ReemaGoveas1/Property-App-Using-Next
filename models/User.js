@@ -11,7 +11,7 @@ const userSchema = new Schema ({
         required: [true, "Username is required"]
     },
     image: {
-        type: string
+        type: String
     },
     bookmarks: [
         {
