@@ -3,9 +3,10 @@ import "../assets/styles/global.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import '@/assets/styles/global.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "@/assets/styles/global.css";
+import { GlobalProvider } from "@/context/GlobalContext";
 
 export const metadata = {
   title: "Property Application | Find your best place",
@@ -15,18 +16,18 @@ export const metadata = {
 
 const PropertyLayout = ({ children }) => {
   return (
-    // <AuthProvider>
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body>
+        <GlobalProvider>
           <AuthProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer/>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
           </AuthProvider>
-        </body>
-      </html>
-    //  </AuthProvider>
+        </GlobalProvider>
+      </body>
+    </html>
   );
 };
 
