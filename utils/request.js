@@ -4,7 +4,7 @@ const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 // if it cant fetch properties for home page so adding null here, so while deploying it doesnt throw error.
 // so then we can go to the server and update this domain to the domain we need.
 //fetch all properties
-const fetchProperties = async (request) => {
+const fetchProperties = async ({showFeatured=false} = {}) => {
   try {
     if(!apiDomain) {
         return [];
@@ -12,7 +12,7 @@ const fetchProperties = async (request) => {
 
     // adding http://localhost:3000 coz this is being done in server
     //cache: "no-store" added properties will be visible without hard refresh
-    const res = await fetch(`${apiDomain}/properties`, {
+    const res = await fetch(`${apiDomain}/properties${showFeatured? "/featured":""}`, {
       cache: "no-store",
     });
 
